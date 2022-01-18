@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  /* Nav */
+  .nav-btn {
+    @apply w-12 h-12 rounded-md bg-stone-300 flex justify-center items-center;
+  }
+
+  /* ----
+    Animations
+  ---- */
+  .fadeInRight {
+    animation: slideRight 1s;
+  }
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .fadeInLeft {
+    animation: fadeInLeft 1s;
+  }
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .fadeInTop {
+    animation: fadeInTop 1s;
+  }
+  @keyframes fadeInTop {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fadeInBottom {
+    animation: fadeInBottom 1s;
+  }
+  @keyframes fadeInBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fadeIn {
+    animation: fadeIn 1s ease-in-out;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  /* ----
+    Animations - end
+  ---- */
+  @media only screen and (max-width: 768px) {
+    .smhidden {
+      display: none !important;
+    }
+  }
+  /* Forms */
+  .input-text {
+    @apply outline-none px-2 py-1 rounded focus:ring-2 focus:ring-lime-500;
+  }
+  .smooth {
+    @apply transform duration-300 ease-in-out;
+  }
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #d9d9d9;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-lime-500 rounded-full smooth;
+}
+
+.scrollbar-track-rounded-full::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+.scrollbar-thumb-rounded-full::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+.scrollbar-thumb-blue-50::-webkit-scrollbar-track {
+  background: #c4c4c4;
+}
+.scrollbar-track-gray-50::-webkit-scrollbar-thumb {
+  background: #6638b6;
+}
