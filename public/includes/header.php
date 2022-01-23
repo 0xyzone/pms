@@ -1,23 +1,54 @@
 <?php
+session_start();
 include "globalvar.php";
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo $site; ?>css/tailwind.css">
     <link rel="stylesheet" href="<?php echo $site; ?>css/all.css">
-    <title>
-        <?php
-        if (isset($title)){
-            echo $title;
-        } else {
-            echo "No Title inserted!";
+    <link rel="stylesheet" href="<?php echo $site; ?>css/style.css">
+    <link rel="stylesheet" href="<?php echo $site; ?>css/style-dark.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
+    <script src="<?php echo $site ?>js/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
+    <script>
+        let Mode = localStorage.getItem('Mode');
+        const enableDarkMode = () => {
+            $('#html').addClass('dark');
+            localStorage.setItem('Mode', 'dark');
         }
-        ?>
-    </title>
+        const disableDarkMode = () => {
+            $('#html').removeClass('dark');
+            localStorage.setItem('Mode', null);
+        }
+
+        if (Mode === 'dark') {
+            enableDarkMode();
+            $('#toggle').html('<i class="fad fa-lightbulb-on text-2xl"></i>');
+            $('#toggle').val('light');
+            $('#logo').removeClass('hidden');
+        }
+    </script>
+    <title id="title"></title>
 </head>
-<body class="w-screen h-screen">
+
+<body class="w-screen h-screen relative">
+
+    <?php
+    if (isset($_SESSION['error'])) :
+    ?>
+        <div class="absolute z-20 w-max py-2 px-4 font-bold bottom-8 right-8 bg-red-200 text-red-800 border border-current fadeInLeft text-xl shadow-main rounded" id="err">
+            <?php echo $_SESSION['error']; ?>
+        </div>
+        <script>
+            setTimeout(function() {
+                $('#err').fadeOut('slow');
+                <?php unset($_SESSION['error']); ?>
+            }, 3000); // <-- time in milliseconds
+        </script>
+    <?php endif;  ?>

@@ -1,34 +1,89 @@
-<div class="flex-none px-3 py-4 flex flex-col justify-between smhidden bg-stone-100">
+<?php
+if ((!isset($_SESSION['user'])) && (!isset($_SESSION['user_role']))) {
+    header('Location: ' . $site . 'admin');
+};
+$btnTop = array(
+    array('Dashboard', '<i class="far fa-home"></i>', 'index.php', 'home'),
+);
+$btnsuperadmin = array(
+    array('Add Users', '<i class="fas fa-user-plus"></i>', '?option=adduser', 'addusers'),
+);
+$btnbottom = array(
+    array('View Profile', '<i class="far fa-user text-2xl"></i>', 'user=' . $_SESSION["user"] . '', 'profile'),
+);
+?>
+<div class="navbar z-[9999]">
     <div class=" flex flex-col gap-2">
-        <div class="w-12 h-12 rounded-md flex justify-center items-center">
-            <img src="<?php echo $site;?>img/symbol.svg" alt="logo" class="w-10 h-10">
+        <div class="w-12 h-12 rounded-md flex justify-center items-center relative group">
+            <img src="<?php echo $site; ?>img/symbol.svg" alt="logo" class="w-10 h-10 z-[100] dark:hidden">
+            <img src="<?php echo $site; ?>img/symbol2.svg" alt="logo" class="w-10 h-10 z-[100] hidden" id="logo">
+            <span class="right-arrow left-14"></span>
+            <span class="right-tooltip left-[3.7rem]">Designer's Hub</span>
         </div>
-        <div class="nav-btn">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-            </svg>
-        </div>
-        <div class="nav-btn">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
-            </svg>
-        </div>
+        <?php foreach ($btnTop as $btn) : ?>
+            <button class="nav-btn group" id="<?php echo $btn['3'] ?>">
+                <div class="relative flex items-center">
+                    <?php echo $btn['1']; ?>
+                    <span class="right-arrow"></span>
+                    <span class="right-tooltip"><?php echo $btn['0']; ?></span>
+                </div>
+            </button>
+            <script>
+                $('#<?php echo $btn['3']; ?>').click(function() {window.location.replace(site+'<?php echo $btn['2']; ?>')});
+            </script>
+        <?php endforeach; ?>
+        <?php
+        if (isset($_SESSION['user_role'])) {
+            if ($_SESSION['user_role'] == 'superadmin') {
+                foreach ($btnsuperadmin as $btn3) {
+        ?>
+                    <button class="nav-btn group" id="<?php echo $btn3['3'] ?>">
+                        <div class="relative flex items-center">
+                            <?php echo $btn3['1']; ?>
+                            <span class="right-arrow"></span>
+                            <span class="right-tooltip"><?php echo $btn3['0']; ?></span>
+                        </div>
+                    </button>
+                    <script>
+                        $('#<?php echo $btn3['3']; ?>').click(function() {
+                            window.location.replace(site+'<?php echo $btn3['2']; ?>')
+                        });
+                    </script>
+        <?php
+                }
+            }
+        }
+        ?>
     </div>
     <div class=" flex flex-col gap-2">
-        <div class="nav-btn">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
+        <?php foreach ($btnbottom as $btn2) : ?>
+            <a href="<?php echo $site . '?' . $btn2['2']; ?>" class="nav-btn group">
+                <div class="relative flex items-center">
+                    <button class="" id="<?php echo $btn2['3']; ?>"><?php echo $btn2['1']; ?></button>
+                    <span class="right-arrow"></span>
+                    <span class="right-tooltip"><?php echo $btn2['0']; ?></span>
+                </div>
+            </a>
+        <?php endforeach; ?>
+        <div class="nav-btn group" id="loginout">
+            <div class="relative flex items-center">
+                <button class="" onClick="return confirm('Are you absolutely sure you want logout?')"><i class="fas fa-sign-out-alt text-2xl"></i></i></button>
+                <span class="right-arrow"></span>
+                <span class="right-tooltip">Log out</span>
+            </div>
         </div>
-        <div class="nav-btn">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-            </svg>
-        </div>
-        <div class="nav-btn">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
-            </svg>
+        <div class="nav-btn group">
+            <div class="relative flex items-center">
+                <button class="" id="toggle" value="dark"><i class="fad fa-lightbulb-slash text-2xl"></i></i></button>
+                <span class="right-arrow"></span>
+                <span class="right-tooltip">Toggle Dark/Ligth mode.</span>
+            </div>
         </div>
     </div>
 </div>
+<script src="<?php echo $site; ?>js/darkmode.js"></script>
+<script>
+    $('#loginout').click(function() {
+        window.location.replace(site + 'admin/logout.php');
+    })
+</script>

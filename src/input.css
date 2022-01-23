@@ -6,19 +6,70 @@
   h1 {
     @apply font-bold;
   }
+  fieldset {
+    @apply border border-solid border-lime-600 py-3 pl-3 pr-6 w-max;
+  }
+  legend {
+    @apply text-sm px-2 font-bold;
+  }
+  input {
+    @apply outline-none px-2 py-1 rounded focus:ring-2 focus:ring-lime-500 text-stone-700 bg-stone-300 w-48;
+  }
+  label {
+    @apply text-right font-bold;
+  }
 }
 
 @layer components {
+  /* Global */
+  .header {
+    @apply bg-lime-600 text-stone-200 w-full text-2xl px-4 py-2 rounded-lg flex gap-2;
+  }
+  .smooth {
+    @apply transform duration-300 ease-in-out;
+  }
+  .btn-primary {
+    @apply bg-lime-600 rounded-md py-2 px-4 hover:scale-105 hover:shadow-main;
+  }
+
+  /* fontawesome */
+  .fad {
+    @apply text-2xl;
+  }
+  .fas {
+    @apply text-2xl;
+  }
+  .far {
+    @apply text-2xl;
+  }
+  /* Boxes */
+  .box {
+    @apply w-max p-4 bg-stone-400/50 rounded-lg z-10;
+  }
+  .box-header {
+    @apply text-2xl dark:text-stone-100 font-bold pb-4;
+  }
   /* Nav */
   .nav-btn {
-    @apply w-12 h-12 rounded-md bg-stone-300 flex justify-center items-center;
+    @apply w-12 h-12 rounded-md bg-stone-300 dark:bg-stone-300/20 dark:text-stone-200 flex justify-center items-center smooth hover:cursor-pointer hover:scale-110 hover:shadow-main hover:bg-lime-600 dark:hover:bg-lime-600 hover:text-stone-50;
+  }
+  .navbar {
+    @apply flex-none px-3 py-4 flex flex-col justify-between smhidden bg-stone-100 dark:bg-stone-800 smooth;
+  }
+  /* Panel */
+  .pannel-card {
+    @apply w-full bg-stone-200 dark:bg-stone-200/20 dark:text-stone-50 rounded-md py-2 px-2 border-l-4 border-transparent hover:border-lime-400 hover:translate-x-1 hover:shadow-main smooth;
+  }
+  .card-stack {
+    @apply w-full h-full overflow-y-auto px-4 mb-4 relative flex flex-col gap-2;
   }
 
   /* ----
     Animations
   ---- */
+
   .fadeInRight {
-    animation: slideRight 1s;
+    animation: fadeInRight 1s;
   }
   @keyframes fadeInRight {
     0% {
@@ -84,6 +135,7 @@
       transform: scale(1);
     }
   }
+
   /* ----
     Animations - end
   ---- */
@@ -93,11 +145,25 @@
     }
   }
   /* Forms */
-  .input-text {
-    @apply outline-none px-2 py-1 rounded focus:ring-2 focus:ring-lime-500;
+  .input-group {
+    @apply flex gap-4 items-center;
   }
-  .smooth {
-    @apply transform duration-300 ease-in-out;
+  .input-group-col {
+    @apply flex flex-col w-max gap-4;
+  }
+  .input-label {
+    @apply w-28;
+  }
+
+  /* ToolTips */
+  .right-tooltip {
+    @apply absolute z-[100] invisible group-hover:visible text-xs bg-lime-700 text-stone-200 p-2 left-11 w-max shadow-md rounded-lg;
+  }
+  .right-arrow {
+    @apply w-2 h-2 bg-lime-700 absolute rotate-45 left-10 z-[100] invisible group-hover:visible shadow-md;
+  }
+  .shadow-main {
+    @apply shadow-[2px_2px_5px_0px] dark:shadow-black/30 shadow-gray-400;
   }
 }
 ::-webkit-scrollbar {
