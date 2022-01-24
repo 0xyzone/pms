@@ -68,7 +68,7 @@ $btnbottom = array(
         <?php endforeach; ?>
         <div class="nav-btn group" id="loginout">
             <div class="relative flex items-center">
-                <button class="" onClick="return confirm('Are you absolutely sure you want logout?')"><i class="fas fa-sign-out-alt text-2xl"></i></i></button>
+                <a href="<?php echo $site.'admin/logout.php'; ?>" class="" onClick="return confirm('Are you absolutely sure you want logout?')"><i class="fas fa-sign-out-alt text-2xl"></i></i></a>
                 <span class="right-arrow"></span>
                 <span class="right-tooltip">Log out</span>
             </div>
@@ -83,8 +83,8 @@ $btnbottom = array(
     </div>
 </div>
 <script src="<?php echo $site; ?>js/darkmode.js"></script>
-<script>
+<!-- <script>
     $('#loginout').click(function() {
         location.href = site + 'admin/logout.php';
     })
-</script>
+</script> -->
