@@ -15,25 +15,46 @@
   input {
     @apply outline-none px-2 py-1 rounded focus:ring-2 focus:ring-lime-500 text-stone-700 bg-stone-300 w-48;
   }
+  textarea {
+    @apply outline-none px-2 py-1 rounded focus:ring-2 focus:ring-lime-500 text-stone-700 bg-stone-300 resize-none;
+  }
+  select {
+    @apply outline-none px-2 py-1 rounded focus:ring-2 focus:ring-lime-500 text-stone-700 bg-stone-300 w-48;
+  }
   label {
     @apply text-right font-bold;
+  }
+  th {
+    @apply text-left px-2 text-stone-50;
+  }
+  tr {
+    @apply dark:even:bg-stone-800/50;
+  }
+  td {
+    @apply px-2 py-2;
+  }
+  tbody:first-child {
+    padding-top: 10px;
   }
 }
 
 @layer components {
   /* Global */
   .header {
-    @apply bg-lime-600 text-stone-200 w-full text-2xl px-4 py-2 rounded-lg flex gap-2;
+    @apply bg-lime-700 dark:bg-lime-600 text-stone-200 w-full text-2xl px-4 py-2 rounded-lg flex gap-2 smooth;
   }
   .smooth {
     @apply transform duration-300 ease-in-out;
   }
   .btn-primary {
-    @apply bg-lime-600 rounded-md py-2 px-4 hover:scale-105 hover:shadow-main;
+    @apply bg-lime-700 dark:bg-lime-600 rounded-md py-2 px-4 hover:scale-105 hover:shadow-main text-white text-lg flex items-center justify-center gap-2;
+  }
+  .maincontent {
+    @apply flex flex-col gap-4 z-[999];
   }
 
   /* fontawesome */
-  .fad {
+  /* .fad {
     @apply text-2xl;
   }
   .fas {
@@ -41,7 +62,7 @@
   }
   .far {
     @apply text-2xl;
-  }
+  } */
   /* Boxes */
   .box {
     @apply w-max p-4 bg-stone-400/50 rounded-lg z-10;
@@ -51,7 +72,7 @@
   }
   /* Nav */
   .nav-btn {
-    @apply w-12 h-12 rounded-md bg-stone-300 dark:bg-stone-300/20 dark:text-stone-200 flex justify-center items-center smooth hover:cursor-pointer hover:scale-110 hover:shadow-main hover:bg-lime-600 dark:hover:bg-lime-600 hover:text-stone-50;
+    @apply w-12 h-12 rounded-md bg-stone-300 dark:bg-stone-300/20 dark:text-stone-200 flex justify-center items-center smooth hover:cursor-pointer hover:shadow-main hover:bg-lime-600 dark:hover:bg-lime-600 hover:text-stone-50;
   }
   .navbar {
     @apply flex-none px-3 py-4 flex flex-col justify-between smhidden bg-stone-100 dark:bg-stone-800 smooth;
@@ -146,7 +167,7 @@
   }
   /* Forms */
   .input-group {
-    @apply flex gap-4 items-center;
+    @apply lg:flex gap-4 grid grid-cols-2 grid-flow-row-dense items-center;
   }
   .input-group-col {
     @apply flex flex-col w-max gap-4;
@@ -157,15 +178,25 @@
 
   /* ToolTips */
   .right-tooltip {
-    @apply absolute z-[100] invisible group-hover:visible text-xs bg-lime-700 text-stone-200 p-2 left-11 w-max shadow-md rounded-lg;
+    @apply absolute z-[9999] invisible group-hover:visible text-xs bg-lime-700 text-stone-200 p-2 left-11 w-max shadow-md rounded-lg;
   }
   .right-arrow {
-    @apply w-2 h-2 bg-lime-700 absolute rotate-45 left-10 z-[100] invisible group-hover:visible shadow-md;
+    @apply w-2 h-2 bg-lime-700 absolute rotate-45 left-10 z-[9999] invisible group-hover:visible shadow-md;
   }
   .shadow-main {
     @apply shadow-[2px_2px_5px_0px] dark:shadow-black/30 shadow-gray-400;
   }
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
+
 ::-webkit-scrollbar {
   width: 10px;
 }

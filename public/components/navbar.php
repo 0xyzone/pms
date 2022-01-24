@@ -1,44 +1,45 @@
 <?php
-if ((!isset($_SESSION['user'])) && (!isset($_SESSION['user_role']))) {
+if ((!isset($_SESSION['dh_user'])) && (!isset($_SESSION['dh_user_role']))) {
     header('Location: ' . $site . 'admin');
 };
 $btnTop = array(
     array('Dashboard', '<i class="far fa-home"></i>', 'index.php', 'home'),
+    array('Notes', '<i class="fas fa-sticky-note"></i>', '?notes='.$_SESSION['dh_user'], 'notes'),
 );
 $btnsuperadmin = array(
     array('Add Users', '<i class="fas fa-user-plus"></i>', '?option=adduser', 'addusers'),
 );
 $btnbottom = array(
-    array('View Profile', '<i class="far fa-user text-2xl"></i>', 'user=' . $_SESSION["user"] . '', 'profile'),
+    array('View Profile', '<i class="far fa-user text-2xl"></i>', 'user=' . $_SESSION["dh_user"] . '', 'profile'),
 );
 ?>
 <div class="navbar z-[9999]">
     <div class=" flex flex-col gap-2">
-        <div class="w-12 h-12 rounded-md flex justify-center items-center relative group">
+        <div class="w-12 h-12 rounded-md flex justify-center items-center relative group z-[9999]">
             <img src="<?php echo $site; ?>img/symbol.svg" alt="logo" class="w-10 h-10 z-[100] dark:hidden">
             <img src="<?php echo $site; ?>img/symbol2.svg" alt="logo" class="w-10 h-10 z-[100] hidden" id="logo">
+        </div>
             <span class="right-arrow left-14"></span>
             <span class="right-tooltip left-[3.7rem]">Designer's Hub</span>
-        </div>
         <?php foreach ($btnTop as $btn) : ?>
-            <button class="nav-btn group" id="<?php echo $btn['3'] ?>">
-                <div class="relative flex items-center">
+            <button class="nav-btn group flex-none" id="<?php echo $btn['3'] ?>">
+                <div class="relative flex items-center text-2xl">
                     <?php echo $btn['1']; ?>
                     <span class="right-arrow"></span>
                     <span class="right-tooltip"><?php echo $btn['0']; ?></span>
                 </div>
             </button>
             <script>
-                $('#<?php echo $btn['3']; ?>').click(function() {window.location.replace(site+'<?php echo $btn['2']; ?>')});
+                $('#<?php echo $btn['3']; ?>').click(function() {location.href = site+'<?php echo $btn['2']; ?>'});
             </script>
         <?php endforeach; ?>
         <?php
-        if (isset($_SESSION['user_role'])) {
-            if ($_SESSION['user_role'] == 'superadmin') {
+        if (isset($_SESSION['dh_user_role'])) {
+            if ($_SESSION['dh_user_role'] == 'superadmin') {
                 foreach ($btnsuperadmin as $btn3) {
         ?>
                     <button class="nav-btn group" id="<?php echo $btn3['3'] ?>">
-                        <div class="relative flex items-center">
+                        <div class="relative flex items-center text-2xl">
                             <?php echo $btn3['1']; ?>
                             <span class="right-arrow"></span>
                             <span class="right-tooltip"><?php echo $btn3['0']; ?></span>
@@ -46,7 +47,7 @@ $btnbottom = array(
                     </button>
                     <script>
                         $('#<?php echo $btn3['3']; ?>').click(function() {
-                            window.location.replace(site+'<?php echo $btn3['2']; ?>')
+                            location.href = site+'<?php echo $btn3['2']; ?>';
                         });
                     </script>
         <?php
@@ -55,7 +56,7 @@ $btnbottom = array(
         }
         ?>
     </div>
-    <div class=" flex flex-col gap-2">
+    <div class=" flex flex-col gap-2 border-solid border-t-2 pt-4 border-stone-400/20">
         <?php foreach ($btnbottom as $btn2) : ?>
             <a href="<?php echo $site . '?' . $btn2['2']; ?>" class="nav-btn group">
                 <div class="relative flex items-center">
@@ -84,6 +85,6 @@ $btnbottom = array(
 <script src="<?php echo $site; ?>js/darkmode.js"></script>
 <script>
     $('#loginout').click(function() {
-        window.location.replace(site + 'admin/logout.php');
+        location.href = site + 'admin/logout.php';
     })
 </script>

@@ -1,6 +1,6 @@
 <?php
 include 'includes/main.php';
-if ((!isset($_SESSION['user'])) && (!isset($_SESSION['user_role']))) {
+if ((!isset($_SESSION['dh_user'])) && (!isset($_SESSION['dh_user_role']))) {
     header('Location: ' . $site . 'admin');
 } else {
 ?>
@@ -8,11 +8,9 @@ if ((!isset($_SESSION['user'])) && (!isset($_SESSION['user_role']))) {
         <?php include 'components/navbar.php'; ?>
         <?php include 'components/pannel.php'; ?>
         <?php include 'components/maincontent.php'; ?>
+        <?php include 'components/pannel-right.php'; ?>
     </div>
     <script>
-        var user = '<?php echo $_SESSION['user']; ?>';
-        var userrole = '<?php echo $_SESSION['user_role']; ?>';
-        console.log('Current user = ' + user);
-        console.log('Current user-role = ' + userrole);
+        $("#title").html(title);
     </script>
 <?php } ?>

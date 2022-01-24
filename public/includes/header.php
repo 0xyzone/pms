@@ -2,6 +2,7 @@
 session_start();
 include "globalvar.php";
 ?>
+
 <!DOCTYPE html>
 <html lang="en" id="html">
 
@@ -35,6 +36,12 @@ include "globalvar.php";
         }
     </script>
     <title id="title"></title>
+    <script>
+        var user = '<?php echo $_SESSION['dh_user']; ?>';
+        var userrole = '<?php echo $_SESSION['dh_user_role']; ?>';
+        console.log('Current user = ' + user);
+        console.log('Current user-role = ' + userrole);
+    </script>
 </head>
 
 <body class="w-screen h-screen relative">
@@ -49,6 +56,19 @@ include "globalvar.php";
             setTimeout(function() {
                 $('#err').fadeOut('slow');
                 <?php unset($_SESSION['error']); ?>
+            }, 3000); // <-- time in milliseconds
+        </script>
+    <?php endif;  ?>
+    <?php
+    if (isset($_SESSION['success'])) :
+    ?>
+        <div class="absolute z-20 w-max py-2 px-4 bottom-8 right-8 bg-lime-200 text-lime-800 border border-current fadeInLeft text-xl shadow-main rounded" id="success">
+            <?php echo $_SESSION['success']; ?>
+        </div>
+        <script>
+            setTimeout(function() {
+                $('#success').fadeOut('slow');
+                <?php unset($_SESSION['success']); ?>
             }, 3000); // <-- time in milliseconds
         </script>
     <?php endif;  ?>
