@@ -7,10 +7,10 @@
     @apply font-bold;
   }
   fieldset {
-    @apply border border-solid border-lime-600 py-3 pl-3 pr-6 w-max;
+    @apply border border-solid border-lime-600 pt-3 pb-6 pl-6 pr-6 w-max;
   }
   legend {
-    @apply text-sm px-2 font-bold;
+    @apply text-sm px-2 font-bold dark:text-stone-100;
   }
   input {
     @apply outline-none px-2 py-1 rounded focus:ring-2 focus:ring-lime-500 text-stone-700 bg-stone-300 w-48;
@@ -51,6 +51,9 @@
   }
   .maincontent {
     @apply flex flex-col gap-4 z-[999];
+  }
+  .required {
+    @apply after:content-['*'] after:dark:text-amber-200/80 after:text-amber-700 after:ml-1;
   }
 
   /* fontawesome */

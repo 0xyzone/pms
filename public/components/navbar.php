@@ -5,12 +5,13 @@ if ((!isset($_SESSION['dh_user'])) && (!isset($_SESSION['dh_user_role']))) {
 $btnTop = array(
     array('Dashboard', '<i class="far fa-home"></i>', 'index.php', 'home'),
     array('Notes', '<i class="fas fa-sticky-note"></i>', '?notes='.$_SESSION['dh_user'], 'notes'),
+    array('Tasks', '<i class="fas fa-tasks"></i>', '?tasks='.$_SESSION['dh_user'], 'tasks'),
 );
 $btnsuperadmin = array(
     array('Add Users', '<i class="fas fa-user-plus"></i>', '?option=adduser', 'addusers'),
 );
 $btnbottom = array(
-    array('View Profile', '<i class="far fa-user text-2xl"></i>', 'user=' . $_SESSION["dh_user"] . '', 'profile'),
+    // array('View Profile', '<i class="far fa-user text-2xl"></i>', 'user=' . $_SESSION["dh_user"] . '', 'profile'),
 );
 ?>
 <div class="navbar z-[9999]">
@@ -83,8 +84,3 @@ $btnbottom = array(
     </div>
 </div>
 <script src="<?php echo $site; ?>js/darkmode.js"></script>
-<!-- <script>
-    $('#loginout').click(function() {
-        location.href = site + 'admin/logout.php';
-    })
-</script> -->

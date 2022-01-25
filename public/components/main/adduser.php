@@ -9,7 +9,7 @@
         <h1>Add User</h1>
     </div>
     <section id="adduser_form">
-            <form action="includes/backend/user-add.php" method="post" class="dark:text-stone-100 flex flex-col space-y-6 items-start justify-start w-full fadeInBottom">
+            <form action="includes/backend/user-add.php" method="post" class="dark:text-stone-100 flex flex-col space-y-6 justify-center items-center w-full fadeInBottom">
                 <fieldset>
                     <legend> User Details </legend>
                     <div class="input-group-col">

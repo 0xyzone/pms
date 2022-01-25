@@ -64,5 +64,8 @@
     if (isset($_GET['notes'])) {
         include 'main/notes.php';
     }
+    if (isset($_GET['tasks'])) {
+        include 'main/tasks/task-list.php';
+    }
     ?>
 </div>
