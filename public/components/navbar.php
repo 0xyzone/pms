@@ -1,3 +1,6 @@
+<script>
+    const mainsite = '<?php echo $site ?>';
+</script>
 <?php
 if ((!isset($_SESSION['dh_user'])) && (!isset($_SESSION['dh_user_role']))) {
     header('Location: ' . $site . 'admin');
@@ -31,7 +34,7 @@ $btnbottom = array(
                 </div>
             </button>
             <script>
-                $('#<?php echo $btn['3']; ?>').click(function() {location.href = site+'<?php echo $btn['2']; ?>'});
+                $('#<?php echo $btn['3']; ?>').click(function() {location.href = mainsite+'<?php echo $btn['2']; ?>'});
             </script>
         <?php endforeach; ?>
         <?php
@@ -48,7 +51,7 @@ $btnbottom = array(
                     </button>
                     <script>
                         $('#<?php echo $btn3['3']; ?>').click(function() {
-                            location.href = site+'<?php echo $btn3['2']; ?>';
+                            location.href = mainsite+'<?php echo $btn3['2']; ?>';
                         });
                     </script>
         <?php

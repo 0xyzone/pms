@@ -1,6 +1,6 @@
 <?php
 include 'includes/main.php';
-if ((!isset($_SESSION['dh_user'])) && (!isset($_SESSION['dh_user_role']))) {
+if ((!isset($_SESSION['dh_user'])) || (!isset($_COOKIE['dh_user']))) {
     header('Location: ' . $site . 'admin');
 } else {
 ?>

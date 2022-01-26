@@ -7,6 +7,6 @@ if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
 };
 $site = $url.$_SERVER['SERVER_NAME'].'/pms/public/';
 ?>
-<script>
-    const site = '<?php echo $site ?>';
-</script>
+<!-- <script>
+    const mainsite = '<?php echo $site ?>';
+</script> -->

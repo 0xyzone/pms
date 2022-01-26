@@ -23,7 +23,7 @@ if (mysqli_num_rows($query) > 0) {
     <?php endif; ?>
 </div>
 <script>
-    var newsite = site + '?notes=<?php echo $user; ?>&new=1';
+    var newsite = mainsite + '?notes=<?php echo $user; ?>&new=1';
     console.log(newsite);
     $('#new').click(function() {
         location.href = newsite;

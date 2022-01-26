@@ -1,16 +1,17 @@
 <?php
 include '../includes/main.php';
 include '../includes/background.php';
-if ((isset($_SESSION['dh_user'])) && (isset($_SESSION['dh_user_role']))) {
+if (isset($_COOKIE['dh_user'])){
+    $_SESSION['dh_user'] = $_COOKIE['dh_user'];
+}
+if ((isset($_SESSION['dh_user'])) || (isset($_COOKIE['dh_user']))) {
     header('Location: ' . $site);
 } else {
+    
 ?>
     <script>
         var title = 'Log In';
         $("#title").html(title);
-
-        var user = '<?php echo $_SESSION['dh_user']; ?>';
-        console.log('Current user = ' + user);
     </script>
     <script src="<?php echo $site ?>js/darkmode.js"></script>
     <div class="w-full h-full flex justify-center items-center bg-stone-200 z-10">

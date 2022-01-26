@@ -26,6 +26,8 @@ if ($_POST) {
                     $_SESSION['error'] = "You are already logged in elsewhere.";
                     header('location:' . $site . 'admin');
                 } else {
+                    date_default_timezone_set('Asia/Kathmandu');
+                    setcookie("dh_user",$dbuser,time()+3600*24*30*12, "/");
                     $_SESSION['dh_user'] = $dbuser;
                     $_SESSION['dh_user_role'] = $dbrole;
                     $db->query("UPDATE userbase SET status='Online' WHERE username='$dbuser'");

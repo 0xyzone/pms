@@ -37,12 +37,16 @@ include "globalvar.php";
         }
     </script>
     <title id="title"></title>
+    <?php if (isset($_SESSION['user'])) : ?>
     <script>
         var user = '<?php echo $_SESSION['dh_user']; ?>';
+        var cookieuser = '<?php echo $_COOKIE['dh_user']; ?>';
         var userrole = '<?php echo $_SESSION['dh_user_role']; ?>';
         console.log('Current user = ' + user);
+        console.log('Cookie user = ' + cookieuser);
         console.log('Current user-role = ' + userrole);
     </script>
+    <?php endif; ?>
 </head>
 
 <body class="w-screen h-screen relative">
