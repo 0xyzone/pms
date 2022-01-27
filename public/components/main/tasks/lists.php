@@ -10,7 +10,7 @@
 </div>
 <script>
     $('#newtask').click(function() {
-        location.href = site + '?tasks=' + user + '&newtask=1';
+        location.href = mainsite + '?tasks=' + user + '&newtask=1';
     })
 </script>
 <div class="w-full flex justify-between gap-4 fadeInBottom">
@@ -22,9 +22,9 @@
         <div class="header">Assigned to you</div>
         <?php include 'assigned-to.php'; ?>
     </div>
-    <div class="flex flex-col gap-2 w-full">
-        <div class="header">Tasks under progress</div>
-        <?php include 'under-progress.php'; ?>
+    <div class="flex flex-col gap-2 w-full smhidden">
+        <div class="header">Completed Tasks</div>
+        <?php include 'completed.php'; ?>
     </div>
 </div>
 <?php endif; ?>

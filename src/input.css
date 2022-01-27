@@ -59,6 +59,11 @@
     @apply after:content-['*'] after:dark:text-amber-200/80 after:text-amber-700 after:ml-1;
   }
 
+  /* Tasks */
+  .task-status {
+    @apply w-max bg-stone-100 dark:bg-stone-200/80 px-4 rounded-lg smooth flex items-center gap-2 h-16;
+  }
+
   /* fontawesome */
   /* .fad {
     @apply text-2xl;

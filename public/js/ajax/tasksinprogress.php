@@ -3,7 +3,7 @@ session_start();
 include '../../includes/dbconnection.php';
 include '../../includes/globalvar.php';
 $user = $_SESSION['dh_user'];
-$tskrqry = mysqli_query($db, "SELECT * FROM tasks WHERE design_status='In Progress' && assigned_to='$user' || created_by='$user' ORDER BY ID ASC");
+$tskrqry = mysqli_query($db, "SELECT * FROM tasks WHERE design_status='In Progress' && (assigned_to='$user' || created_by='$user') ORDER BY ID ASC");
 ?>
 <?php foreach ($tskrqry as $row) : ?>
     <a href="<?php echo $site.'?tasks='.$user.'&viewtask='.$row['ID']; ?>">

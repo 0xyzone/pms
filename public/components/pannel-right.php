@@ -20,7 +20,7 @@
     </div>
     <div class="card-stack" id="in-progress">
         <?php
-        $tskrqry = mysqli_query($db, "SELECT * FROM tasks WHERE design_status='In Progress' && assigned_to='$user' || created_by='$user' ORDER BY ID ASC");
+        $tskrqry = mysqli_query($db, "SELECT * FROM tasks WHERE design_status='In Progress' && (assigned_to='$user' || created_by='$user') ORDER BY ID ASC");
         $tskqryselfassign = mysqli_query($db, "SELECT * FROM tasks WHERE design_status='In Progress' ORDER BY ID ASC");
         ?>
         <?php foreach ($tskrqry as $row) : ?>

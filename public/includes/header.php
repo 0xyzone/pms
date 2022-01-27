@@ -37,7 +37,6 @@ include "globalvar.php";
         }
     </script>
     <title id="title"></title>
-    <?php if (isset($_SESSION['user'])) : ?>
     <script>
         var user = '<?php echo $_SESSION['dh_user']; ?>';
         var cookieuser = '<?php echo $_COOKIE['dh_user']; ?>';
@@ -46,10 +45,14 @@ include "globalvar.php";
         console.log('Cookie user = ' + cookieuser);
         console.log('Current user-role = ' + userrole);
     </script>
-    <?php endif; ?>
 </head>
 
-<body class="w-screen h-screen relative">
+<body class="w-screen h-screen relative selection:bg-lime-500 selection:text-white">
+    <div class="w-full h-full absolute top-0 bg-lime-800 z-[99999] flex justify-center items-center md:hidden">
+        <div class="p-5 bg-black/50 border-4 border-current text-yellow-500 text-2xl flex items-center gap-2 w-10/12">
+        <i class="fas fa-sensor-alert fa-2x"></i> Please use a desktop or a laptop to view the contents!
+        </div>
+    </div>
 
     <?php
     if (isset($_SESSION['error'])) :
