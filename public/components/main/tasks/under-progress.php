@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['tasks'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <?php
 $tskrqry = mysqli_query($db, "SELECT * FROM tasks WHERE design_status='In Progress' && assigned_to='$user' || created_by='$user' ORDER BY ID DESC");
 ?>
@@ -18,3 +21,4 @@ $tskrqry = mysqli_query($db, "SELECT * FROM tasks WHERE design_status='In Progre
         </div>
     <?php endforeach; ?>
 </div>
+<?php endif; ?>

@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['tasks'])) : ?>
+    echo "You are not allowed to view this.";
+<?php else : ?>
 <?php
 $tskid = $_GET['viewtask'];
 $taskquery = mysqli_query($db, "SELECT * FROM tasks WHERE ID='$tskid'");
@@ -30,3 +33,4 @@ $result = mysqli_fetch_array($taskquery);
         </div>
     </div>
 </div>
+<?php endif; ?>

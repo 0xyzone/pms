@@ -1,4 +1,6 @@
-
+<?php if (!isset($_GET['tasks'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <?php $query = $db->query("SELECT * FROM tasks WHERE created_by='$user' && design_status='Pending'");
 if (isset($_GET['delete'])) {
     $delid = $_GET['delete'];
@@ -31,3 +33,4 @@ if (isset($_GET['delete'])) {
         </div>
     <?php endforeach; ?>
 </div>
+<?php endif; ?>

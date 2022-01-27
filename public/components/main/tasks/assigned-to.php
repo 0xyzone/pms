@@ -1,4 +1,6 @@
-
+<?php if (!isset($_GET['tasks'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <?php 
 $aquery = $db->query("SELECT * FROM tasks WHERE assigned_to='$user' && design_status='Pending'");
 ?>
@@ -19,3 +21,4 @@ $aquery = $db->query("SELECT * FROM tasks WHERE assigned_to='$user' && design_st
         </div>
     <?php endforeach; ?>
 </div>
+<?php endif; ?>

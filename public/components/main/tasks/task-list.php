@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['tasks'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <script>
     var title = 'Tasks';
 </script>
@@ -11,3 +14,4 @@
         include 'lists.php';
     } ?>
 </div>
+<?php endif; ?>

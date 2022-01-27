@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['tasks'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <div class="header z-[50] fadeInTop">
     <button onclick="history.go(-1)"><i class="fad fa-arrow-left"></i></button>
     <h1>Task List</h1>
@@ -24,3 +27,4 @@
         <?php include 'under-progress.php'; ?>
     </div>
 </div>
+<?php endif; ?>

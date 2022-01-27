@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['tasks'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <script>
     var title = 'New Task';
 </script>
@@ -41,3 +44,4 @@ $query = mysqli_query($db, "SELECT * FROM userbase ORDER BY ID ASC");
     </fieldset>
     <button type="submit" id="create" class="btn-primary" onclick="return confirm('Are you sure you want to proceed?')">Create</button>
 </form>
+<?php endif; ?>
