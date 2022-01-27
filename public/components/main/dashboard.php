@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['option'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <!-- title -->
 <script>
     var title = 'Dashboard';
@@ -44,3 +47,4 @@
         });
     }, 1000)
 </script>
+<?php endif; ?>

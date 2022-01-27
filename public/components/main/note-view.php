@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['notes'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <form action="includes/backend/update-note.php" method="POST" class="flex flex-col gap-4 w-max fadeInBottom">
     <input type="text" name="id" value="<?php echo $_GET['view']; ?>" hidden>
     <input type="text" name="user" value="<?php echo $_GET['notes']; ?>" hidden>
@@ -7,3 +10,4 @@
         <button type="submit" class="btn-primary">Update</button>
     </div>
 </form>
+<?php endif; ?>

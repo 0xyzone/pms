@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['notes'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <script>
     var title = 'Notes';
 </script>
@@ -29,3 +32,4 @@ if (mysqli_num_rows($query) > 0) {
         location.href = newsite;
     })
 </script>
+<?php endif; ?>

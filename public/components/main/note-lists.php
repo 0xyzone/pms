@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['notes'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <?php
 $query = mysqli_query($db, "SELECT * FROM notes WHERE user='$user' ORDER BY ID ASC");
 $numrows = mysqli_num_rows($query);
@@ -62,3 +65,4 @@ if (isset($_GET['delete'])) {
 
 <?php }
 endif; ?>
+<?php endif; ?>

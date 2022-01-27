@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['new'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <div class="header z-[50] fadeInTop">
     <button onclick="history.go(-1)"><i class="fad fa-arrow-left"></i></button>
     <h1>New Note</h1>
@@ -18,3 +21,4 @@
         <button type="submit" class="btn-primary" name="submit">Submit</button>
     </div>
 </form>
+<?php endif; ?>

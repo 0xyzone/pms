@@ -1,3 +1,6 @@
+<?php if (!isset($_GET['option'])) : ?>
+    <?php echo "You are not allowed to view this."; ?>
+<?php else : ?>
 <!-- title -->
 <script>
     var title = 'Add User';
@@ -68,3 +71,4 @@
             </form>
     </section>
 </div>
+<?php endif; ?>

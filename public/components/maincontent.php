@@ -3,9 +3,10 @@
     $user = $_SESSION['dh_user'];
     ?>
     <!-- main body -->
-    <?php if (!isset($_GET['option'])) {
-        include 'main/dashboard.php';
-    }
+    <?php 
+    // if (!isset($_GET['option'])) {
+    // include 'main/dashboard.php';
+    // }
     ?>
     <!-- main content -->
     <?php if (isset($_GET['option'])) { ?>
