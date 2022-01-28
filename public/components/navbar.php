@@ -6,7 +6,7 @@ if ((!isset($_SESSION['dh_user'])) && (!isset($_SESSION['dh_user_role']))) {
     header('Location: ' . $site . 'admin');
 };
 $btnTop = array(
-    array('Dashboard', '<i class="far fa-home"></i>', 'index.php', 'home'),
+    array('Dashboard', '<i class="far fa-home"></i>', '?dashboard='.$_SESSION['dh_user'], 'home'),
     array('Notes', '<i class="fas fa-sticky-note"></i>', '?notes='.$_SESSION['dh_user'], 'notes'),
     array('Tasks', '<i class="fas fa-tasks"></i>', '?tasks='.$_SESSION['dh_user'], 'tasks'),
 );
@@ -22,9 +22,9 @@ $btnbottom = array(
         <div class="w-12 h-12 rounded-md flex justify-center items-center relative group z-[9999]">
             <img src="<?php echo $site; ?>img/symbol.svg" alt="logo" class="w-10 h-10 z-[100] dark:hidden">
             <img src="<?php echo $site; ?>img/symbol2.svg" alt="logo" class="w-10 h-10 z-[100] hidden" id="logo">
+            <span class="right-arrow left-14 z-[9999]"></span>
+            <span class="right-tooltip left-[3.7rem] z-[9999]">Designer's Hub</span>
         </div>
-            <span class="right-arrow left-14"></span>
-            <span class="right-tooltip left-[3.7rem]">Designer's Hub</span>
         <?php foreach ($btnTop as $btn) : ?>
             <button class="nav-btn group flex-none" id="<?php echo $btn['3'] ?>">
                 <div class="relative flex items-center text-2xl">
