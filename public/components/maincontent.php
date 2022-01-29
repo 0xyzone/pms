@@ -20,6 +20,8 @@
         include 'main/notes.php';
     } elseif (isset($_GET['tasks'])) {
         include 'main/tasks/task-list.php';
+    } elseif (isset($_GET['alltask'])) {
+        include 'main/tasks/alltasks.php';
     } elseif (isset($_GET['dashboard'])) {
         include 'main/dashboard.php';
     } else {

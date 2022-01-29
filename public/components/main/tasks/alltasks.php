@@ -1,12 +1,12 @@
-<?php if (!isset($_SESSION['dh_user'])) : ?>
+<?php if (!isset($_GET['alltask'])) : ?>
     <?php echo "You are not allowed to view this."; ?>
 <?php else : ?>
 <!-- title -->
 <script>
-    var title = 'All Task';
+    var title = 'All tasks';
 </script>
 <div class="w-full container mx-auto text-center bg-slate-200">
-    Dashboard coming soon! Please stay tuned.
+    All task view coming soon! Please stay tuned.
 </div>
 <!-- end title -->
 <?php endif; ?>

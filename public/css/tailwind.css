@@ -651,8 +651,6 @@ tbody:first-child {
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
   --tw-text-opacity: 1;
   color: rgb(231 229 228 / var(--tw-text-opacity));
 }
@@ -660,6 +658,13 @@ tbody:first-child {
 .dark .header {
   --tw-bg-opacity: 1;
   background-color: rgb(101 163 13 / var(--tw-bg-opacity));
+}
+
+@media (min-width: 1280px) {
+  .header {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
 
 .smooth {

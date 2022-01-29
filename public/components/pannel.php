@@ -34,7 +34,7 @@ $query2 = mysqli_query($db, "SELECT * FROM tasks WHERE (assigned_to='$user' || c
             </a>
         <?php endforeach; ?>
     </div>
-    <button class="absolute bottom-2 hover:text-lime-700 hover:dark:text-lime-600 group flex gap-2 items-center dark:text-white">
+    <button class="absolute bottom-2 hover:text-lime-700 hover:dark:text-lime-600 group flex gap-2 items-center dark:text-white" id="alltaskslist">
         <i class="fas fa-eye" title="View all task"></i>
         View all tasks
     </button>
@@ -48,4 +48,8 @@ $query2 = mysqli_query($db, "SELECT * FROM tasks WHERE (assigned_to='$user' || c
             }
         });
     }, 1000)
+    $('#alltaskslist').click(function(){
+        location.href = mainsite+'?alltask='+user;
+        console.log('Hi');
+    })
 </script>
