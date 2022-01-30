@@ -12,15 +12,12 @@ $alltaskquery = mysqli_query($db,"SELECT * FROM tasks WHERE assigned_to='$user'"
     <?php foreach ($alltaskquery as $row) : ?>
         <div class="flex flex-col w-full border border-stone-300 dark:border-stone-400 p-4 rounded-lg shadow-main relative fadeInBottom">
             <h2 class="text-lg font-bold dark:text-lime-400 truncate"><?php echo $row['task_subject']; ?></h2>
-            <p>Assigned to: <span class="font-bold text-lime-700 dark:text-lime-500"><?php echo $row['assigned_to']; ?></span></p>
+            <p>Assignee: <span class="font-bold text-lime-700 dark:text-lime-500"><?php echo $row['created_by']; ?></span></p>
             <div class="flex gap-2 justify-between w-full items-center">
                 <span class="text-xs dark:text-stone-100/30 text-stone-500"><?php echo $row['created_on']; ?></span>
                 <div class="flex gap-3">
                     <a href="<?php echo '?tasks=' . $user . '&viewtask=' . $row['ID']; ?>" class="">
                         <i class="fas fa-eye text-stone-500 hover:text-lime-700 hover:dark:text-lime-600" title="View note"></i>
-                    </a>
-                    <a href="<?php echo '?tasks=' . $user . '&delete=' . $row['ID']; ?>" class="" onclick="return confirm('Are you sure you want to delete?')">
-                        <i class="fas fa-trash text-red-500/50 hover:text-red-500 hover:dark:text-red-500" title="View note"></i>
                     </a>
                 </div>
 

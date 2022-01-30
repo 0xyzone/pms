@@ -30,7 +30,7 @@
                         </div>
                         <div class="flex gap-4">
                             <p class="p-4 bg-transparent border-current border rounded-lg"><?php echo $result['design_status'] ?></p>
-                            <button type="submit" class="btn-primary" id="update" form="taskupdate">Update</button>
+                            <button type="submit" class="btn-primary <?if($result['post_status'] == 'Posted'){echo 'hidden'; } ?>" id="update" form="taskupdate">Update</button>
                         </div>
                     </div>
                     <div>
