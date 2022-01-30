@@ -44,13 +44,16 @@
 @layer components {
   /* Global */
   .header {
-    @apply bg-lime-700 dark:bg-lime-600 text-stone-200 w-full xl:text-2xl px-4 py-2 rounded-lg flex gap-2 smooth;
+    @apply bg-lime-700 dark:bg-lime-600 text-stone-200 w-full text-lg px-4 py-2 rounded-lg flex gap-2 smooth;
   }
   .smooth {
     @apply transform duration-300 ease-in-out;
   }
   .btn-primary {
     @apply bg-lime-700 dark:bg-lime-600 rounded-md py-2 px-4 hover:scale-105 hover:shadow-main text-white text-lg flex items-center justify-center gap-2;
+  }
+  .btn-secondary {
+    @apply bg-transparent dark:bg-transparent border border-current rounded-md py-2 px-4 hover:scale-105 hover:shadow-main hover:text-white hover:dark:text-white hover:bg-lime-600 hover:dark:bg-lime-600 hover:border-lime-600 hover:dark:border-lime-600 text-lime-600 dark:text-lime-500 text-lg flex items-center justify-center gap-2;
   }
   .maincontent {
     @apply flex flex-col gap-4 z-[999];
