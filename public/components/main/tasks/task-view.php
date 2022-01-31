@@ -35,7 +35,7 @@
                                 echo 'hidden';
                             } ?>" id="update" form="taskupdate">Update</button>
                             <?php if ($result['created_by'] == $user) : ?>
-                                <a href="<?php echo $site.'?tasks='.$user.'&delete='.$result['ID']; ?>" class="p-4 bg-red-500 hover:bg-red-700 rounded-lg text-white" onclick=""><i class="fas fa-trash"></i></a>
+                                <a href="<?php echo $site.'?tasks='.$user.'&delete='.$result['ID']; ?>" class="p-4 bg-red-500 hover:bg-red-700 rounded-lg text-white" onclick="return confirm('Are you sure you want to delete it?')"><i class="fas fa-trash"></i></a>
                             <?php endif; ?>
                         </div>
                     </div>
