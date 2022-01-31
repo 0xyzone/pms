@@ -1858,6 +1858,11 @@ tbody:first-child {
   background-color: rgb(77 124 15 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-red-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+
 .hover\:text-lime-700:hover {
   --tw-text-opacity: 1;
   color: rgb(77 124 15 / var(--tw-text-opacity));
