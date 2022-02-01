@@ -1,5 +1,5 @@
 <?php
-$alltaskquery = mysqli_query($db,"SELECT * FROM tasks WHERE assigned_to='$user'");
+$alltaskquery = mysqli_query($db,"SELECT * FROM tasks WHERE assigned_to='$user' ORDER BY ID DESC");
 // $alltaskres = mysqli_fetch_assoc($alltaskquery);
 ?>
 <div class="flex flex-wrap gap-4 w-full mt-2">

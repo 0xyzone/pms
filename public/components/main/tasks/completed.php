@@ -2,7 +2,7 @@
     <?php echo "You are not allowed to view this."; ?>
 <?php else : ?>
 <?php
-$tskrqry = mysqli_query($db, "SELECT * FROM tasks WHERE design_status='Approved' && (assigned_to='$user' || created_by='$user') ORDER BY ID DESC");
+$tskrqry = mysqli_query($db, "SELECT * FROM tasks WHERE design_status='Approved' && (assigned_to='$user' || created_by='$user') ORDER BY ID DESC LIMIT 3");
 ?>
 <div class="flex flex-wrap gap-4 w-full mt-2">
     <?php foreach ($tskrqry as $row) : ?>

@@ -1,7 +1,7 @@
 <?php if (!isset($_GET['tasks'])) : ?>
     <?php echo "You are not allowed to view this."; ?>
 <?php else : ?>
-<?php $query = $db->query("SELECT * FROM tasks WHERE created_by='$user' && design_status='Pending'");
+<?php $query = $db->query("SELECT * FROM tasks WHERE created_by='$user' && design_status='Pending' ORDER BY ID DESC");
 if (isset($_GET['delete'])) {
     $delid = $_GET['delete'];
     $db->query("DELETE FROM tasks WHERE ID=$delid");
