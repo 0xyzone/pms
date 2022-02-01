@@ -35,7 +35,7 @@
                                 echo 'hidden';
                             } ?>" id="update" form="taskupdate">Update</button>
                             <?php if ($result['created_by'] == $user) : ?>
-                                <a href="<?php echo $site.'?tasks='.$user.'&delete='.$result['ID']; ?>" class="p-4 bg-red-500 hover:bg-red-700 rounded-lg text-white" onclick="return confirm('Are you sure you want to delete it?')"><i class="fas fa-trash"></i></a>
+                                <a href="<?php echo $site . '?tasks=' . $user . '&delete=' . $result['ID']; ?>" class="p-4 bg-red-500 hover:bg-red-700 rounded-lg text-white" onclick="return confirm('Are you sure you want to delete it?')"><i class="fas fa-trash"></i></a>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -81,22 +81,66 @@
                     </div>
                     <fieldset class="rounded-lg w-full">
                         <legend class="">Task Details</legend>
-                        <textarea name="task_details" id="task_details" class="w-full h-auto box text-lg dark:text-white" rows="5" <?php if (($user != $result['created_by']) || ($result['post_status'] == "Posted")) {
-                                                                                                                                        echo "disabled";
-                                                                                                                                    } else {
-                                                                                                                                        echo "";
-                                                                                                                                    }; ?>><?php echo $result['task_details']; ?></textarea>
+                        <textarea <?php
+                                    if (($user != $result['created_by']) || ($result['post_status'] == "Posted")) {
+                                        echo "disabled";
+                                    } else {
+                                        echo "";
+                                    }; ?> name="task_details" id="task_details" class="w-full h-auto box text-lg dark:text-white" rows="5"><?php echo $result['task_details']; ?></textarea>
                     </fieldset>
                     <fieldset class="rounded-lg w-full">
-                        <legend class="flex items-center gap-2 text-xl"><i class="fad fa-comment-alt-exclamation text-2xl text-yellow-500 fa-swap-opacity"></i> Remarks</legend>
-                        <textarea name="remarks" id="remarks" rows="2" class="w-full h-auto box text-lg dark:text-white" <?php if (($user != $result['created_by']) || ($result['post_status'] == "Posted")) {
-                                                                                                                                echo "disabled";
-                                                                                                                            } else {
-                                                                                                                                echo "";
-                                                                                                                            }; ?>></textarea>
+                        <legend class="flex items-center gap-2 text-xl"><i class="fas fa-square-exclamation text-2xl text-yellow-500 fa-swap-opacity"></i> Remarks</legend>
+                        <textarea <?php if (($user != $result['created_by']) || ($result['post_status'] == "Posted")) {
+                                        echo "disabled";
+                                    } else {
+                                        echo "";
+                                    }; ?> name="remarks" id="remarks" rows="2" class="w-full h-auto box text-lg dark:text-white"><?php echo $result['remarks']; ?></textarea>
                     </fieldset>
                 </div>
             </form>
         </div>
+        <?php if (($_SESSION['dh_user'] != "superadmin") || $_COOKIE['dh_user'] != "superadmin") : ?>
+            <div class="flex flex-col gap-4 w-full dark:bg-stone-600 bg-stone-300 p-4 rounded-lg smooth shadow-main fadeInBottom">
+                <fieldset class="rounded-lg w-full flex flex-col gap-4">
+                    <legend class="flex items-center gap-2 text-xl"><i class="fad fa-comment-alt-exclamation text-2xl dark:text-yellow-500 text-yellow-600 fa-swap-opacity"></i>Comments</legend>
+                    <div class="flex flex-col gap-2">
+                        <?php
+                        $commentquery = $db->query("SELECT * FROM task_comments WHERE task_id='$tskid'");
+                        ?>
+                        <?php foreach($commentquery as $row) : ?>
+                        <div class="w-full <?php if($_SESSION['dh_user'] == $row['user']){ echo "bg-gray-transparent"; } else { echo "bg-gray-100"; } ?> p-4 rounded-lg flex flex-col gap-2">
+                            <h3 class="text-xl font-bold <?php if($_SESSION['dh_user'] == $row['user']){ echo "text-lime-600"; } else { echo "text-lime-600"; } ?>"><?php  if ($user == $row['user']){ echo "You"; } else { echo $row['created_by']; } ?> <span class=" text-md font-normal <?php if($_SESSION['dh_user'] == $row['user']){ echo "text-stone-500"; } else { echo "text-stone-900/50"; } ?> text-sm"><?php if ($user == $row['user']){ echo "said"; } else { echo "commented"; } ?></span></h3>
+                            <div class="flex flex-col gap-1">
+                                <textarea disabled class="<?php if($_SESSION['dh_user'] == $row['user']){ echo "bg-gray-200/50 text-stone-800 dark:text-stone-800"; } else { echo "bg-gray-300 dark:text-stone-700 text-stone-700"; } ?>"><?php echo $row['comment']; ?></textarea>
+                                <p class="<?php if($_SESSION['dh_user'] == $row['user']){ echo "text-stone-800 dark:text-stone-800"; } else { echo "dark:text-stone-700 text-stone-700"; } ?> text-xs">
+                                <?php if ($user == $row['user'] ) : ?>
+                                <a href="<?php echo $site.'includes/backend/comment-delete.php/?delete='.$row['ID'].'&tasks='.$user.'&viewtask='.$tskid; ?>" class="dark:text-stone-400 text-stone-400 hover:text-red-500 hover:dark:text-red-500" onclick="return confirm('Are you sure you want to delete?')">
+                                <i class="fas fa-trash"></i> delete</a>
+                                 • 
+                                 <?php endif; ?>
+                                <?php echo $row['created_on']; ?></p>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <div>
+                        <form action="includes/backend/comment-process.php" method="POST" class="flex gap-2">
+                            <input type="text" name="taskid" id="taskid" value="<?php echo $result['ID']; ?>" hidden>
+                            <textarea onkeyup="success()" name="comment" id="comment" rows="2" class="w-full bg-stone-200" placeholder="Write a comment..."></textarea>
+                            <button type="submit" class="btn-primary disabled:dark:bg-gray-400 disabled:bg-gray-400 disabled:hover:scale-100 disabled:shadow-none" id="send" disabled>Send <i class="fas fa-paper-plane"></i></button>
+                            <script>
+                                function success() {
+                                    if (document.getElementById("comment").value === "") {
+                                        document.getElementById('send').disabled = true;
+                                    } else {
+                                        document.getElementById('send').disabled = false;
+                                    }
+                                }
+                            </script>
+                        </form>
+                    </div>
+                </fieldset>
+            </div>
+        <?php endif; ?>
     <?php }; ?>
 <?php endif;  ?>
