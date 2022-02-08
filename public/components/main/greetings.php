@@ -7,13 +7,13 @@ $usares = mysqli_fetch_array($usaquery);
         <?php
         date_default_timezone_set('Asia/Kathmandu');
         if (date("H") < 5) {
-            echo "Hey! Night Owl!";
+            echo "Hey! Night Owl! ".'<span class="text-lime-500">'.$usares['fname'].'</span>';
         } else if ((date("H") >= 5) && (date("H") < 12)) {
-            echo "Good Morning!";
+            echo "Good Morning! ".'<span class="text-lime-500">'.$usares['fname'].'</span>';
         } else if ((date("H") >= 12) && (date("H") < 17)) {
-            echo "Good Afternoon!";
+            echo "Good Afternoon! ".'<span class="text-lime-500">'.$usares['fname'].'</span>';
         } else if (date("H") >= 17) {
-            echo "Good Evening! ".'<span class="text-lime-600">'.$usares['fname'].'</span>';
+            echo "Good Evening! ".'<span class="text-lime-500">'.$usares['fname'].'</span>';
         }
         ?>
     </h1>

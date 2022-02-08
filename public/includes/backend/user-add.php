@@ -4,6 +4,12 @@ session_start();
 include '../../includes/dbconnection.php';
 include '../../includes/globalvar.php';
 if ($_POST) {
+    if (empty($_POST['join-date'])){
+        $join_date = "NULL";
+    } else {
+        $join_date = $_POST['join-date'];
+    }
+
     $status = "Offline";
     $uname = $_POST['uname'];
     $pw = $_POST['pw'];
@@ -28,8 +34,8 @@ if ($_POST) {
         $stmt->execute();
         $stmt->close();
         
-        $stmt2 = $db->prepare('INSERT INTO profile(fname, lname, uname, dob, email, mno, street, city) VALUES(?, ?, ?, ?, ?, ?, ?, ?)');
-        $stmt2->bind_param('ssssssss', $fname, $lname, $uname, $dob, $email, $mobile, $street, $city);
+        $stmt2 = $db->prepare('INSERT INTO profile(joined, fname, lname, uname, dob, email, mno, street, city) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $stmt2->bind_param('sssssssss', $join_date, $fname, $lname, $uname, $dob, $email, $mobile, $street, $city);
         $stmt2->execute();
         $stmt2->close();
 

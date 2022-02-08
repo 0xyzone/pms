@@ -7,13 +7,28 @@
     $ujaname = $_GET['profile'];
     /* Queries */
     $profilequery = $db->query("SELECT * FROM profile WHERE uname='$ujaname'");
+    $ujaquery = $db->query("SELECT * FROM userbase WHERE username='$ujaname'");
     /** end Queries */
 
+    
+
+    // print_r($ujatype);
+    if (mysqli_num_rows($profilequery) < 1){
+        echo "No results found.";
+    } else {
+    
     /** variables */
     $ujares = mysqli_fetch_array($profilequery);
+    $ujaares = mysqli_fetch_array($ujaquery);
+
+
     $ujaid = $ujares['ID'];
+    $ujajoined = $ujares['joined'];
+    
+    if(($ujajoined == "0000-00-00") || $ujajoined == NULL){ $joined_text = ""; $join_date = ""; } else { $joined_text = " • Joined"; $join_date = $ujares['joined']; }
     $ujafname = $ujares['fname'];
     $ujalname = $ujares['lname'];
+    $ujatype = $ujaares['role'];
     $ujauname = $ujares['uname'];
     $ujadob = $ujares['dob'];
     $ujaemail = $ujares['email'];
@@ -21,7 +36,6 @@
     $ujastreet = $ujares['street'];
     $ujacity = $ujares['city'];
     /** end variables */
-
     ?>
     <div class="maincontent">
 
@@ -57,14 +71,14 @@
                         <i class="fas fa-user-circle text-6xl text-lime-600"></i>
                     </div>
                     <div class="flex flex-col">
-                        <h1 class="text-2xl"><?php echo $ujafname . ' ' . $ujalname; ?></h1>
-                        <span class="text-stone-600"><?php echo '#' . $ujaid . ' • ' . $ujauname; ?></span>
+                        <h1 class="text-2xl"><?php echo $ujafname . ' ' . $ujalname; ?> <span class="capitalize">(<?php echo $ujatype; ?>)</span></h1>
+                        <span class="text-stone-600"><?php echo '#' . $ujaid . ' • ' . $ujauname . $joined_text . ' ' . $join_date; ?></span>
                     </div>
                 </div>
                 <div class="flex gap-2">
                     <?php if ($user != $ujauname) : ?>
-                        <div class="text-lime-600 border border-current flex items-center px-4 rounded-xl">
-                            <h2 class="text-2xl">Online</h2>
+                        <div class="<?php if ($ujaares['status'] == "Online") { echo "text-lime-600"; } else { echo ""; }  ?> border border-current flex items-center px-4 rounded-xl">
+                            <h2 class="text-2xl" id="satatus"><?php echo $ujaares['status']; ?></h2>
                         </div>
                     <?php endif; ?>
                     <?php if ($user == $ujauname) : ?>
@@ -81,4 +95,5 @@
             <!-- end User details -->
         <?php endif; ?>
     </div>
+    <?php } ?>
 <?php endif; ?>

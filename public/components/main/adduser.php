@@ -1,17 +1,17 @@
 <?php if (!isset($_GET['option'])) : ?>
     <?php echo "You are not allowed to view this."; ?>
 <?php else : ?>
-<!-- title -->
-<script>
-    var title = 'Add User';
-</script>
-<!-- end title -->
-<div class="maincontent">
-    <div class="header z-[50] fadeInTop">
-        <button onclick="history.go(-1)"><i class="fad fa-arrow-left"></i></button>
-        <h1>Add User</h1>
-    </div>
-    <section id="adduser_form">
+    <!-- title -->
+    <script>
+        var title = 'Add User';
+    </script>
+    <!-- end title -->
+    <div class="maincontent">
+        <div class="header z-[50] fadeInTop">
+            <button onclick="history.go(-1)"><i class="fad fa-arrow-left"></i></button>
+            <h1>Add User</h1>
+        </div>
+        <section id="adduser_form">
             <form action="includes/backend/user-add.php" method="post" class="dark:text-stone-100 flex flex-col space-y-6 justify-center items-center w-full fadeInBottom">
                 <fieldset>
                     <legend> User Details </legend>
@@ -25,10 +25,23 @@
                         <div class="input-group">
                             <label for="role" class="input-label">Role:</label>
                             <select name="role" id="role">
+                                <option value="intern">Intern</option>
                                 <option value="designer">Designer</option>
                                 <option value="superadmin">Superadmin</option>
                                 <option value="admin">Admin</option>
                             </select>
+                            <label for="join-date" class="input-label" id="join-date-label" >Joined:</label>
+                            <input type="date" name="join-date" id="join-date" placeholder="dd/mm/yyyy">
+                            <script>
+                                document.getElementById('role').addEventListener('change', function() {
+                                    var style = this.value == 'intern' ? 'block' : 'none';
+                                    document.getElementById('join-date-label').style.display = style;
+                                    document.getElementById('join-date').style.display = style;
+                                });
+                            </script>
+                        </div>
+                        <div class="input-group">
+
                         </div>
                     </div>
 
@@ -69,6 +82,6 @@
                 </fieldset>
                 <button class="btn-primary" onclick="return confirm('Are you sure you want to continue?');"><i class="fas fa-user-plus"></i><span> ADD</span></button>
             </form>
-    </section>
-</div>
+        </section>
+    </div>
 <?php endif; ?>
