@@ -64,13 +64,14 @@
                             </select>
                         </div>
                         <div class="task-status">
-                            <p class="font-bold text-lime-600 dark:text-lime-700">Post Status:</p>
+                            <p class="font-bold text-lime-600 dark:text-lime-700">Post/Print Status:</p>
                             <select name="post_status" id="post_status" class="dark:bg-white smooth" <?php if ($result['post_status'] == "Posted") {
                                                                                                             echo "disabled";
                                                                                                         } ?>>
                                 <option value="<?php echo $result['post_status']; ?>" hidden><?php echo $result['post_status']; ?></option>
                                 <option value="Pending">Pending</option>
                                 <option value="Scheduled">Scheduled</option>
+                                <option value="Printing">Printing</option>
                                 <option value="Posted">Posted</option>
                             </select>
                         </div>
@@ -89,12 +90,22 @@
                                     }; ?> name="task_details" id="task_details" class="w-full h-auto box text-lg dark:text-white" rows="5"><?php echo $result['task_details']; ?></textarea>
                     </fieldset>
                     <fieldset class="rounded-lg w-full">
-                        <legend class="flex items-center gap-2 text-xl"><i class="fas fa-square-exclamation text-2xl text-yellow-500 fa-swap-opacity"></i> Remarks</legend>
+                        <legend class="flex items-center gap-2 text-xl"><i class="fas fa-square-exclamation text-2xl fa-swap-opacity" id="remarksicon"></i> Remarks</legend>
+                        <script>
+
+                        </script>
                         <textarea <?php if (($user != $result['created_by']) || ($result['post_status'] == "Posted")) {
                                         echo "disabled";
                                     } else {
                                         echo "";
                                     }; ?> name="remarks" id="remarks" rows="2" class="w-full h-auto box text-lg dark:text-white"><?php echo $result['remarks']; ?></textarea>
+                        <script>
+                            if ($('#remarks').val() == ""){
+                                $("#remarksicon").addClass('text-yellow-500').removeClass('text-lime-600');
+                            } else {
+                                $("#remarksicon").addClass('text-lime-600').removeClass('text-yellow-500');
+                            }
+                        </script>
                     </fieldset>
                 </div>
             </form>

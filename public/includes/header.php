@@ -1,6 +1,25 @@
 <?php
 session_start();
 include "globalvar.php";
+include "dbconnection.php";
+// inactive in seconds
+if (isset($_SESSION['dh_user'])) {
+    $ujaaa = $_SESSION['dh_user'];
+}
+$inactive = 60*60*60;
+if (!isset($_SESSION['timeout']))
+    $_SESSION['timeout'] = time() + $inactive;
+
+$session_life = time() - $_SESSION['timeout'];
+
+if ($session_life > $inactive) {
+    $db->query("UPDATE userbase SET status='Offline' WHERE username='$ujaaa'");
+    setcookie("dh_user", $_SESSION['dh_user'], time(), "/");
+    session_destroy();
+    header('Location: ' . $site . 'admin');
+}
+
+$_SESSION['timeout'] = time();
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +69,7 @@ include "globalvar.php";
 <body class="w-screen h-screen relative selection:bg-lime-500 selection:text-white">
     <div class="w-full h-full absolute top-0 bg-lime-800 z-[99999] flex justify-center items-center md:hidden">
         <div class="p-5 bg-black/50 border-4 border-current text-yellow-500 text-2xl flex items-center gap-2 w-10/12">
-        <i class="fas fa-sensor-alert fa-2x"></i> Please use a desktop or a laptop to view the contents!
+            <i class="fas fa-sensor-alert fa-2x"></i> Please use a desktop or a laptop to view the contents!
         </div>
     </div>
 

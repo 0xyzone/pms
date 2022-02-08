@@ -28,7 +28,10 @@ $query = mysqli_query($db, "SELECT * FROM userbase ORDER BY ID ASC");
             <legend class="required">Assign to</legend>
             <select name="assign_to" id="assign_to" class="w-full">
                 <?php foreach ($query as $row): ?>
-                <option value="<?php echo $row['username']; ?>"><?php echo $row['username']; ?></option>
+                    <?php if (($user == $row['username']) || ($row['username'] == "superadmin")){
+                        continue;
+                    }; ?>
+                <option value="<?php echo $row['username']; ?>" ><?php echo $row['username']; ?></option>
                 <?php endforeach; ?>
             </select>
         </fieldset>

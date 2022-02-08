@@ -1,3 +1,7 @@
+<?php
+$usaquery = $db->query("SELECT * FROM profile WHERE uname='$user'");
+$usares = mysqli_fetch_array($usaquery);
+?>
 <div class="flex flex-col gap-2 pl-4 mb-5">
     <h1 class="text-4xl dark:text-zinc-300">
         <?php
@@ -9,7 +13,7 @@
         } else if ((date("H") >= 12) && (date("H") < 17)) {
             echo "Good Afternoon!";
         } else if (date("H") >= 17) {
-            echo "Good Evening!";
+            echo "Good Evening! ".'<span class="text-lime-600">'.$usares['fname'].'</span>';
         }
         ?>
     </h1>

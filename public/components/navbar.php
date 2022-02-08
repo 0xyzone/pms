@@ -6,15 +6,15 @@ if ((!isset($_SESSION['dh_user'])) && (!isset($_SESSION['dh_user_role']))) {
     header('Location: ' . $site . 'admin');
 };
 $btnTop = array(
-    array('Dashboard', '<i class="far fa-home"></i>', '?dashboard='.$_SESSION['dh_user'], 'home'),
-    array('Notes', '<i class="fas fa-sticky-note"></i>', '?notes='.$_SESSION['dh_user'], 'notes'),
-    array('Tasks', '<i class="fas fa-tasks"></i>', '?tasks='.$_SESSION['dh_user'], 'tasks'),
+    array('Dashboard', '<i class="far fa-home"></i>', '?dashboard=' . $_SESSION['dh_user'], 'home'),
+    array('Notes', '<i class="fas fa-sticky-note"></i>', '?notes=' . $_SESSION['dh_user'], 'notes'),
+    array('Tasks', '<i class="fas fa-tasks"></i>', '?tasks=' . $_SESSION['dh_user'], 'tasks'),
 );
 $btnsuperadmin = array(
     array('Add Users', '<i class="fas fa-user-plus"></i>', '?option=adduser', 'addusers'),
 );
 $btnbottom = array(
-    // array('View Profile', '<i class="far fa-user text-2xl"></i>', 'user=' . $_SESSION["dh_user"] . '', 'profile'),
+    array('View Profile', '<i class="far fa-user text-2xl"></i>', 'profile=' . $_SESSION["dh_user"] . '', 'profile'),
 );
 ?>
 <div class="navbar z-[9999]">
@@ -34,7 +34,9 @@ $btnbottom = array(
                 </div>
             </button>
             <script>
-                $('#<?php echo $btn['3']; ?>').click(function() {location.href = mainsite+'<?php echo $btn['2']; ?>'});
+                $('#<?php echo $btn['3']; ?>').click(function() {
+                    location.href = mainsite + '<?php echo $btn['2']; ?>'
+                });
             </script>
         <?php endforeach; ?>
         <?php
@@ -51,7 +53,7 @@ $btnbottom = array(
                     </button>
                     <script>
                         $('#<?php echo $btn3['3']; ?>').click(function() {
-                            location.href = mainsite+'<?php echo $btn3['2']; ?>';
+                            location.href = mainsite + '<?php echo $btn3['2']; ?>';
                         });
                     </script>
         <?php
@@ -62,28 +64,29 @@ $btnbottom = array(
     </div>
     <div class=" flex flex-col gap-2 border-solid border-t-2 pt-4 border-stone-400/20">
         <?php foreach ($btnbottom as $btn2) : ?>
-            <a href="<?php echo $site . '?' . $btn2['2']; ?>" class="nav-btn group">
+            <a href="<?php echo $site . '?' . $btn2['2']; ?>" class="nav-btn group" id="<?php echo $btn2['3']; ?>">
                 <div class="relative flex items-center">
-                    <button class="" id="<?php echo $btn2['3']; ?>"><?php echo $btn2['1']; ?></button>
+                    <?php echo $btn2['1']; ?>
                     <span class="right-arrow"></span>
                     <span class="right-tooltip"><?php echo $btn2['0']; ?></span>
                 </div>
             </a>
         <?php endforeach; ?>
-        <div class="nav-btn group" id="loginout">
-            <div class="relative flex items-center">
-                <a href="<?php echo $site.'admin/logout.php'; ?>" class="" onClick="return confirm('Are you absolutely sure you want logout?')"><i class="fas fa-sign-out-alt text-2xl"></i></i></a>
-                <span class="right-arrow"></span>
-                <span class="right-tooltip">Log out</span>
-            </div>
-        </div>
-        <div class="nav-btn group">
-            <div class="relative flex items-center">
-                <button class="" id="toggle" value="dark"><i class="fad fa-lightbulb-slash text-2xl"></i></i></button>
-                <span class="right-arrow"></span>
-                <span class="right-tooltip">Toggle Dark/Ligth mode.</span>
-            </div>
+        <a href="<?php echo $site . 'admin/logout.php'; ?>" class="" onClick="return confirm('Are you absolutely sure you want logout?')">
+            <div class="nav-btn group" id="loginout">
+                <div class="relative flex items-center"><i class="fas fa-sign-out-alt text-2xl"></i></i>
+                    <span class="right-arrow"></span>
+                    <span class="right-tooltip">Log out</span>
+                </div>
+        </a>
+    </div>
+    <div class="nav-btn group">
+        <div class="relative flex items-center">
+            <button class="" id="toggle" value="dark"><i class="fad fa-lightbulb-slash text-2xl"></i></i></button>
+            <span class="right-arrow"></span>
+            <span class="right-tooltip">Toggle Dark/Ligth mode.</span>
         </div>
     </div>
+</div>
 </div>
 <script src="<?php echo $site; ?>js/darkmode.js"></script>

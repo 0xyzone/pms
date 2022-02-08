@@ -22,6 +22,8 @@
         include 'main/tasks/task-list.php';
     } elseif (isset($_GET['alltask'])) {
         include 'main/tasks/alltasks.php';
+    } elseif (isset($_GET['profile'])) {
+        include 'main/profile/user.php';
     } elseif (isset($_GET['dashboard'])) {
         include 'main/dashboard.php';
     } else {
