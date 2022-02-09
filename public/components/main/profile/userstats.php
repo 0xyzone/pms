@@ -1,8 +1,7 @@
-<?php if (!isset($_SESSION['dh_user'])) : ?>
-    <?php echo "You are not allowed to view this."; ?>
-<?php else : ?>
-    <?php
-    $profile = $_GET['dashboard'];
+<?php
+if (!isset($_GET['profile'])) {
+} else {
+    $profile = $_GET['profile'];
     $ttltskquery = $db->query("SELECT * FROM tasks WHERE assigned_to='$profile'");
     $pendingtskquery = $db->query("SELECT * FROM tasks WHERE assigned_to='$profile' && design_status='Pending'");
     $completedtskquery = $db->query("SELECT * FROM tasks WHERE assigned_to='$profile' && design_status='Approved'");
@@ -18,17 +17,13 @@
         array('Pending', '<i class="fas fa-business-time text-5xl text-yellow-500"></i>', $ttlpending),
         array('In Progress', '<i class="fad fa-spinner text-5xl text-cyan-500"></i>', $ttlinprogress),
         array('Completed', '<i class="fas fa-check-double text-5xl text-lime-500"></i>', $ttlcompleted),
-        array('Total', '<i class="fas fa-list-check text-5xl text-violet-700"></i>', $ttltsk)
-    );    
-    ?>
-<!-- title -->
-<script>
-    var title = 'All Task';
-</script>
-<!-- end title -->
+        array('Total', '<i class="fa-solid fa-sigma text-5xl text-violet-700"></i>', $ttltsk)
+    );
+}
+?>
 <div class="flex w-full gap-2 fadeInBottom">
     <?php foreach ($stats as $row) : ?>
-        <div class="flex w-3/12 justify-between items-center gap-4 bg-white p-4 rounded-lg">
+        <div class="flex w-3/12 justify-between items-center gap-4 bg-white/50 dark:bg-stone-100 p-4 rounded-lg smooth shadow-main">
             <div class="flex items-center w-max gap-2">
                 <?php echo $row['1']; ?>
                 <div class="flex flex-col justify-center items-start">
@@ -40,4 +35,3 @@
         </div>
     <?php endforeach; ?>
 </div>
-<?php endif; ?>

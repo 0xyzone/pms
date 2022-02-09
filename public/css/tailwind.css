@@ -966,6 +966,11 @@ tbody:first-child {
     Animations
   ---- */
 
+.fadeInRight {
+  -webkit-animation: fadeInRight 1s;
+          animation: fadeInRight 1s;
+}
+
 @-webkit-keyframes fadeInRight {
   0% {
     opacity: 0;
@@ -1296,6 +1301,10 @@ tbody:first-child {
   margin-top: 0.5rem;
 }
 
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
 .block {
   display: block;
 }
@@ -1314,6 +1323,10 @@ tbody:first-child {
 
 .table {
   display: table;
+}
+
+.grid {
+  display: grid;
 }
 
 .contents {
@@ -1388,6 +1401,30 @@ tbody:first-child {
   width: auto;
 }
 
+.w-3 {
+  width: 0.75rem;
+}
+
+.w-3\/12 {
+  width: 25%;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.w-6\/12 {
+  width: 50%;
+}
+
+.w-4\/12 {
+  width: 33.333333%;
+}
+
+.w-2\/12 {
+  width: 16.666667%;
+}
+
 .flex-none {
   flex: none;
 }
@@ -1421,12 +1458,24 @@ tbody:first-child {
   resize: both;
 }
 
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .flex-col {
   flex-direction: column;
 }
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.items-start {
+  align-items: flex-start;
 }
 
 .items-center {
@@ -1463,6 +1512,10 @@ tbody:first-child {
 
 .gap-1 {
   gap: 0.25rem;
+}
+
+.gap-5 {
+  gap: 1.25rem;
 }
 
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
@@ -1652,12 +1705,20 @@ tbody:first-child {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-white\/50 {
+  background-color: rgb(255 255 255 / 0.5);
+}
+
 .p-4 {
   padding: 1rem;
 }
 
 .p-5 {
   padding: 1.25rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .py-2 {
@@ -1670,6 +1731,11 @@ tbody:first-child {
   padding-right: 1rem;
 }
 
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .pt-4 {
   padding-top: 1rem;
 }
@@ -1680,6 +1746,14 @@ tbody:first-child {
 
 .pl-4 {
   padding-left: 1rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-center {
@@ -1721,6 +1795,11 @@ tbody:first-child {
   line-height: 1;
 }
 
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .font-semibold {
   font-weight: 600;
 }
@@ -1731,10 +1810,6 @@ tbody:first-child {
 
 .font-normal {
   font-weight: 400;
-}
-
-.uppercase {
-  text-transform: uppercase;
 }
 
 .capitalize {
@@ -1789,6 +1864,11 @@ tbody:first-child {
   color: rgb(239 68 68 / 0.5);
 }
 
+.text-lime-500 {
+  --tw-text-opacity: 1;
+  color: rgb(132 204 22 / var(--tw-text-opacity));
+}
+
 .text-lime-700 {
   --tw-text-opacity: 1;
   color: rgb(77 124 15 / var(--tw-text-opacity));
@@ -1813,9 +1893,14 @@ tbody:first-child {
   color: rgb(168 162 158 / var(--tw-text-opacity));
 }
 
-.text-lime-500 {
+.text-cyan-500 {
   --tw-text-opacity: 1;
-  color: rgb(132 204 22 / var(--tw-text-opacity));
+  color: rgb(6 182 212 / var(--tw-text-opacity));
+}
+
+.text-violet-700 {
+  --tw-text-opacity: 1;
+  color: rgb(109 40 217 / var(--tw-text-opacity));
 }
 
 .outline-none {
@@ -2008,6 +2093,19 @@ tbody:first-child {
 .dark .dark\:bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-stone-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 244 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:bg-stone-100\/50 {
+  background-color: rgb(245 245 244 / 0.5);
+}
+
+.dark .dark\:bg-stone-100\/80 {
+  background-color: rgb(245 245 244 / 0.8);
 }
 
 .dark .dark\:text-stone-100\/50 {
