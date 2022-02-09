@@ -43,7 +43,7 @@
         $ujacity = $ujares['city'];
         /** end variables */
     ?>
-        <div class="maincontent">
+        <div class="maincontent fadeInBottom">
 
             <!-- Edit mode -->
             <?php if (isset($_GET['edit'])) : ?>
@@ -52,7 +52,7 @@
                     var title = '<?php echo $_GET['profile'] ?> • Edit Profile';
                 </script>
                 <!-- end title -->
-                <div class="header fadeInBottom">
+                <div class="header">
                     <button onclick="history.go(-1)"><i class="fad fa-arrow-left"></i></button>
                     <h1>Edit Profile</h1>
                 </div>
@@ -67,12 +67,12 @@
                     var title = '<?php echo $_GET['profile'] ?> • User Profile';
                 </script>
                 <!-- end title -->
-                <div class="header fadeInBottom">
+                <div class="header">
                     <button onclick="history.go(-1)"><i class="fad fa-arrow-left"></i></button>
                     <h1>User Profile</h1>
                 </div>
                 <div class="maincontent">
-                    <div class="bg-white dark:bg-white w-full h-auto p-4 rounded-2xl shadow-main fadeInBottom flex justify-between">
+                    <div class="bg-white dark:bg-white w-full h-auto p-4 rounded-2xl shadow-main flex justify-between">
                         <div class="flex w-max h-max items-center gap-2">
                             <div class="w-auto h-full">
                                 <i class="fas fa-user-circle text-6xl text-lime-600"></i>

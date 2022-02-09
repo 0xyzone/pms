@@ -21,7 +21,7 @@ if (!isset($_GET['profile'])) {
     );
 }
 ?>
-<div class="flex w-full gap-2 fadeInBottom">
+<div class="flex w-full gap-2">
     <?php foreach ($stats as $row) : ?>
         <div class="flex w-3/12 justify-between items-center gap-4 bg-white/50 dark:bg-stone-100 p-4 rounded-lg smooth shadow-main">
             <div class="flex items-center w-max gap-2">
