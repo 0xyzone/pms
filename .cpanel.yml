@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/vidantac/public/test/
-    - /bin/cp -R pms/* $DEPLOYPATH
+    - /bin/cp pms/* $DEPLOYPATH
