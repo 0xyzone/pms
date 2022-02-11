@@ -6,7 +6,7 @@ include "dbconnection.php";
 if (isset($_SESSION['dh_user'])) {
     $ujaaa = $_SESSION['dh_user'];
 }
-$inactive = 60*60*60;
+$inactive = 60*60;
 if (!isset($_SESSION['timeout']))
     $_SESSION['timeout'] = time() + $inactive;
 
