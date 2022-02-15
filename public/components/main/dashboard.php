@@ -23,7 +23,7 @@
     ?>
 <!-- title -->
 <script>
-    var title = 'All Task';
+    var title = 'Dashboard';
 </script>
 <!-- end title -->
 <div class="flex w-full gap-2 fadeInBottom">
@@ -36,7 +36,7 @@
                     <span class="text-sm text-stone-600 select-none">Tasks</span>
                 </div>
             </div>
-            <span class="text-4xl font-bold pl-2"><?php echo $row['2']; ?></span>
+            <span class="text-4xl font-bold pl-2 select-none"><?php echo $row['2']; ?></span>
         </div>
     <?php endforeach; ?>
 </div>

@@ -43,7 +43,7 @@ if ((isset($_SESSION['dh_user'])) || (isset($_COOKIE['dh_user']))) {
                         <input type="password" value="" class="h-10 focus:ring-1 focus:ring-lime-500 rounded-l-none rounded-r-lg outline-none ring-blue-300 w-full pl-1" id="pw" name="pw" placeholder="password" required pattern=".{8,}">
                     </div>
                     <div class="flex justify-start items-center mb-3 gap-2">
-                        <input type="checkbox" id="showpw" class="w-max focus:ring-0"><span class="text-sm dark:text-stone-100">Show password</span>
+                        <input type="checkbox" id="showpw" class="w-max focus:ring-0"><span class="text-sm dark:text-stone-100" id="show-text">Show password</span>
                     </div>
                     <button value="button" class="px-4 py-2 rounded bg-lime-600 text-white hover:bg-lime-700 w-full smooth" id="submit-btn" name="submit">Login</button>
                 </div>
@@ -56,6 +56,15 @@ if ((isset($_SESSION['dh_user'])) || (isset($_COOKIE['dh_user']))) {
                 $("#pw").attr('type','text');
             } else {
                 $("#pw").attr('type','password');
+            }
+        })
+        $("#show-text").click(function(){
+            if($("#showpw").prop('checked')){
+                $("#pw").attr('type','password');
+                $("#showpw").prop('checked', false);
+            } else {
+                $("#pw").attr('type','text');
+                $("#showpw").prop('checked', true);
             }
         })
     </script>

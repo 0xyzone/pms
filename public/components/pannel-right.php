@@ -1,6 +1,6 @@
 <div class="bg-gray-300 dark:bg-stone-600 w-64 flex flex-col gap-4 smhidden smooth flex-none">
     <div class="relative w-full flex flex-col justify-center px-4 pt-4">
-        <div class="header">Active users</div>
+        <div class="header select-none">Active users</div>
     </div>
     <div class="card-stack" id="online-users">
         <?php
@@ -12,7 +12,7 @@
             }; ?>
             <div class="flex gap-2 px-4 py-2 bg-stone-100/50 rounded-md items-center w-full h-auto">
                 <div class="">
-                    <h1 class="text-lime-600 dark:text-lime-700 inline-block"><?php echo $row['username']; ?></h1>
+                    <a href="<?php echo $site.'?profile='.$row['username']; ?>"><h1 class="text-lime-600 dark:text-lime-700 inline-block"><?php echo $row['username']; ?></h1></a>
                     <span class="inline">is online!</span>
                 </div>
             </div>

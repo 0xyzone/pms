@@ -1321,6 +1321,10 @@ tbody:first-child {
   display: table;
 }
 
+.grid {
+  display: grid;
+}
+
 .contents {
   display: contents;
 }
@@ -1439,6 +1443,10 @@ tbody:first-child {
 
 .resize {
   resize: both;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -2106,6 +2114,10 @@ tbody:first-child {
   color: rgb(168 162 158 / var(--tw-text-opacity));
 }
 
+.dark .dark\:text-stone-100\/30 {
+  color: rgb(245 245 244 / 0.3);
+}
+
 .dark .dark\:text-yellow-500 {
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity));
@@ -2119,10 +2131,6 @@ tbody:first-child {
 .dark .dark\:text-stone-700 {
   --tw-text-opacity: 1;
   color: rgb(68 64 60 / var(--tw-text-opacity));
-}
-
-.dark .dark\:text-stone-100\/30 {
-  color: rgb(245 245 244 / 0.3);
 }
 
 .dark .hover\:dark\:text-lime-600:hover {

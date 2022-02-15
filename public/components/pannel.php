@@ -9,27 +9,27 @@ $query2 = mysqli_query($db, "SELECT * FROM tasks WHERE (assigned_to='$user' || c
         <span class="absolute right-6"><i class="fad fa-search z-10"></i></span>
     </div> -->
     <div class="rounded-none px-4 py-2 bg-lime-600 shadow-main text-white w-full">
-        <h1>New Tasks</h1>
+        <h1 class="select-none">New Tasks</h1>
     </div>
     <div class="card-stack" id="newtasks">
         <?php foreach ($query as $row) : ?>
             <a href="<?php echo $site . '?tasks=' . $user . '&viewtask=' . $row['ID']; ?>">
                 <div class="pannel-card">
-                    <h1><?php echo $row['task_subject']; ?></h1>
-                    <span class="text-xs dark:text-stone-100/50 text-stone-500"><?php echo $row['created_on']; ?></span>
+                    <h1 class="select-none"><?php echo $row['task_subject']; ?></h1>
+                    <span class="text-xs dark:text-stone-100/50 text-stone-500 select-none"><?php echo $row['created_on']; ?></span>
                 </div>
             </a>
         <?php endforeach; ?>
     </div>
     <div class="rounded-none px-4 py-2 bg-lime-600 shadow-main text-white w-full">
-        <h1>Submitted for review</h1>
+        <h1 class="select-none">Submitted for review</h1>
     </div>
     <div class="card-stack" id="submitted">
         <?php foreach ($query2 as $row2) : ?>
             <a href="<?php echo $site . '?tasks=' . $user . '&viewtask=' . $row2['ID']; ?>">
                 <div class="pannel-card">
-                    <h1><?php echo $row2['task_subject']; ?></h1>
-                    <span class="text-xs dark:text-stone-100/50 text-stone-500"><?php echo $row2['design_finished']; ?></span>
+                    <h1 class="select-none"><?php echo $row2['task_subject']; ?></h1>
+                    <span class="text-xs dark:text-stone-100/50 text-stone-500 select-none"><?php echo $row2['design_finished']; ?></span>
                 </div>
             </a>
         <?php endforeach; ?>

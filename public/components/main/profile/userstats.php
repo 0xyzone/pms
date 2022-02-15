@@ -1,7 +1,7 @@
 <?php
 if (!isset($_GET['profile'])) {
 } else {
-    $profile = $_GET['profile'];
+    $profile = $_SESSION['dh_user'];
     $ttltskquery = $db->query("SELECT * FROM tasks WHERE assigned_to='$profile'");
     $pendingtskquery = $db->query("SELECT * FROM tasks WHERE assigned_to='$profile' && design_status='Pending'");
     $completedtskquery = $db->query("SELECT * FROM tasks WHERE assigned_to='$profile' && design_status='Approved'");
