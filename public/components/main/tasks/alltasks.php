@@ -23,7 +23,7 @@
     <!-- <div class="w-full container mx-auto text-center bg-slate-200">
             All task view coming soon! Please stay tuned.
         </div> -->
-    <div class="maincontent">
+    <div class="maincontent select-none">
         <div class="header z-[50] fadeInTop">
             <button onclick="history.go(-1)"><i class="fad fa-arrow-left"></i></button>
             <h1>All tasks list</h1>

@@ -17,7 +17,7 @@ $btnbottom = array(
     array('View Profile', '<i class="far fa-user text-2xl"></i>', 'profile=' . $_SESSION["dh_user"] . '', 'profile'),
 );
 ?>
-<div class="navbar z-[9999]">
+<div class="navbar z-[9999] select-none">
     <div class=" flex flex-col gap-2">
         <div class="w-12 h-12 rounded-md flex justify-center items-center relative group z-[9999]">
             <img src="<?php echo $site; ?>img/symbol.svg" alt="logo" class="w-10 h-10 z-[100] dark:hidden">

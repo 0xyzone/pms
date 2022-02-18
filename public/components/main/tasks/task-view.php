@@ -12,7 +12,7 @@
         <script>
             var title = 'Task #<?php echo $tskid; ?>';
         </script>
-        <div class="maincontent">
+        <div class="maincontent select-none">
             <div class="flex flex-col gap-2 w-full">
                 <div class="header z-[50] fadeInTop">
                     <button onclick="history.go(-1)"><i class="fad fa-arrow-left"></i></button>
@@ -111,7 +111,7 @@
             </form>
         </div>
         <?php if (($_SESSION['dh_user'] != "superadmin") || $_COOKIE['dh_user'] != "superadmin") : ?>
-            <div class="flex flex-col gap-4 w-full dark:bg-stone-600 bg-stone-300 p-4 rounded-lg smooth shadow-main fadeInBottom">
+            <div class="flex flex-col gap-4 w-full dark:bg-stone-600 bg-stone-300 p-4 rounded-lg smooth shadow-main fadeInBottom select-none">
                 <fieldset class="rounded-lg w-full flex flex-col gap-4">
                     <legend class="flex items-center gap-2 text-xl"><i class="fad fa-comment-alt-exclamation text-2xl dark:text-yellow-500 text-yellow-600 fa-swap-opacity"></i>Comments</legend>
                     <div class="flex flex-col gap-2">

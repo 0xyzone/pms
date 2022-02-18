@@ -43,7 +43,7 @@
         $ujacity = $ujares['city'];
         /** end variables */
     ?>
-        <div class="maincontent fadeInBottom">
+        <div class="maincontent fadeInBottom select-none">
 
             <!-- Edit mode -->
             <?php if (isset($_GET['edit'])) : ?>

@@ -11,7 +11,7 @@ if (mysqli_num_rows($query) > 0) {
     $res = mysqli_fetch_assoc($query);
 }
 ?>
-<div class="maincontent">
+<div class="maincontent select-none">
     <?php if (isset($_GET['new'])) : ?>
         <?php include 'new-note.php'; ?>
     <?php else : ?>
