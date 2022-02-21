@@ -1,4 +1,4 @@
-<div class=" p-4 bg-gray-200 dark:bg-stone-700 smooth overflow-y-auto flex-auto">
+<div class=" p-4 bg-gray-200 dark:bg-stone-700 smooth overflow-x-hidden overflow-y-auto flex-auto">
     <?php
     $user = $_SESSION['dh_user'];
     ?>

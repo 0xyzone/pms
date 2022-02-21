@@ -6,7 +6,7 @@ include "dbconnection.php";
 if (isset($_SESSION['dh_user'])) {
     $ujaaa = $_SESSION['dh_user'];
 }
-$inactive = 60*60;
+$inactive = 60 * 60;
 if (!isset($_SESSION['timeout']))
     $_SESSION['timeout'] = time() + $inactive;
 
@@ -34,6 +34,8 @@ $_SESSION['timeout'] = time();
     <link rel="stylesheet" href="<?php echo $site; ?>css/style.css">
     <link rel="stylesheet" href="<?php echo $site; ?>css/style-dark.css">
     <link rel="shortcut icon" href="img/symbol.svg" type="image/x-icon">
+    <script src="<?php echo $site ?>js/push.min.js"></script>
+    <script src="<?php echo $site ?>js/serviceWorker.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> -->
     <script src="<?php echo $site ?>js/jquery-3.6.0.min.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
@@ -66,7 +68,7 @@ $_SESSION['timeout'] = time();
     </script>
 </head>
 
-<body class="w-screen h-screen relative selection:bg-lime-500 selection:text-white">
+<body class="w-screen h-screen relative selection:bg-lime-500 selection:text-white overflow-x-hidden">
     <div class="w-full h-full absolute top-0 bg-lime-800 z-[99999] flex justify-center items-center md:hidden">
         <div class="p-5 bg-black/50 border-4 border-current text-yellow-500 text-2xl flex items-center gap-2 w-10/12">
             <i class="fas fa-sensor-alert fa-2x"></i> Please use a desktop or a laptop to view the contents!
