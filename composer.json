@@ -1,0 +1,9 @@
+{
+    "name": "sumns/pms",
+    "autoload": {
+        "psr-4": {
+            "Sumns\\Pms\\": "src/"
+        }
+    },
+    "require": {}
+}

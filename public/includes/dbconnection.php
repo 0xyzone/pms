@@ -1,6 +1,6 @@
 <?php
 
-$db = mysqli_connect("localhost","vidantac","malaiktha1290","vidantac_pms");
+$db = mysqli_connect("localhost","vidantac_pmsu","malaiktha1290","vidantac_pms");
 
 if(!$db)
 {
